@@ -1,0 +1,30 @@
+<div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Sitter name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Address</th>
+          <th>Actif</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sitter of sitters">
+          <td>{{ sitter.firstName }} {{ sitter.lastName }}</td>
+          <td>{{ sitter.email }}</td>
+          <td>{{ sitter.phone }}</td>
+          <td>{{ sitter.address.street }}, {{ sitter.address.city }}, {{ sitter.address.country }}</td>
+          <td>
+            <div *ngIf="sitter.isActif;then contenu_bon else contenu_pas_bon">Le contenu saisi ici sera ignoré.</div>
+            <ng-template #contenu_bon>Actif</ng-template>
+            <ng-template #contenu_pas_bon>Inactif</ng-template>
+          <td>
+            <button class="btn btn-primary m-1">Edit</button>
+            <button class="btn btn-danger m-1">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
